@@ -1,0 +1,39 @@
+select Name from Tracks
+left join Albums
+on Albums.AlbumId = Tracks.AlbumId
+where Title = "Californication"
+
+
+select FirstName, LastName, City, Email , sum(InvoiceId) as num
+from Customers C
+left join Invoices I
+on C.CustomerId = I.CustomerId
+group by C.CustomerId
+
+select T.Name, A.Title, A.ArtistId, T.TrackId
+from Tracks T
+left join Albums A 
+on A.AlbumId = T.AlbumId
+WHERE T.TrackId = 12
+
+SELECT M.LastName AS Manager, 
+       E.LastName AS Employee
+FROM Employees E INNER JOIN Employees M 
+ON E.ReportsTo = M.EmployeeID
+
+
+select Name, Artists.ArtistId FROM Artists
+LEFT JOIN Albums
+on Artists.ArtistId = Albums.ArtistId
+where AlbumId is null 
+
+select LastName, FirstName from Employees
+union 
+select LastName, FirstName from Customers
+order by LastName desc
+
+
+select LastName from Customers C
+left join Invoices I
+on C.CustomerId = I.CustomerId
+where C.City != I.BillingCity
